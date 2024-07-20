@@ -1,0 +1,57 @@
+{% extends 'layout/app.html' %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6 col-xl-5">
+            <div class="card shadow-lg rounded-4 border-light">
+                <div class="card-body p-5">
+                    <h2 class="card-title text-center text-primary mb-4">Register</h2>
+
+                    <form method="POST" action="{% url 'register' %}">
+                        {% csrf_token %}
+
+                        <div class="form-group mb-4">
+                            <label for="{{ form.username.id_for_label }}" class="form-label fs-5">Username:</label>
+                            <input type="text" name="{{ form.username.name }}" id="{{ form.username.id_for_label }}" class="form-control form-control-lg rounded-3 border-primary" value="{{ form.username.value }}" placeholder="Enter your username" />
+                            {% if form.username.errors %}
+                            <div class="invalid-feedback d-block">
+                                {{ form.username.errors }}
+                            </div>
+                            {% endif %}
+                        </div>
+
+                        <div class="form-group mb-4">
+                            <label for="{{ form.password1.id_for_label }}" class="form-label fs-5">Password:</label>
+                            <input type="password" name="{{ form.password1.name }}" id="{{ form.password1.id_for_label }}" class="form-control form-control-lg rounded-3 border-primary" value="{{ form.password1.value }}" placeholder="Enter your password" />
+                            {% if form.password1.errors %}
+                            <div class="invalid-feedback d-block">
+                                {{ form.password1.errors }}
+                            </div>
+                            {% endif %}
+                        </div>
+
+                        <div class="form-group mb-4">
+                            <label for="{{ form.password2.id_for_label }}" class="form-label fs-5">Re-Type Password:</label>
+                            <input type="password" name="{{ form.password2.name }}" id="{{ form.password2.id_for_label }}" class="form-control form-control-lg rounded-3 border-primary" value="{{ form.password2.value }}" placeholder="Re-enter your password" />
+                            {% if form.password2.errors %}
+                            <div class="invalid-feedback d-block">
+                                {{ form.password2.errors }}
+                            </div>
+                            {% endif %}
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-lg btn-block rounded-pill mt-3 shadow-sm">Register</button>
+
+                        <div class="text-center mt-4">
+                            <p class="mb-0">Already have an account? <a href="{% url 'login' %}" class="btn btn-link text-primary">Login</a></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

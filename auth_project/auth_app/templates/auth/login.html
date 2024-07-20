@@ -1,0 +1,54 @@
+{% extends 'layout/app.html' %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-6">
+            <div class="card shadow-lg border-light rounded-5">
+                <div class="card-body p-5">
+                    <h2 class="card-title text-center text-primary mb-4">Login</h2>
+
+                    {% if form.non_field_errors %}
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <strong>Error:</strong> {{ form.non_field_errors.as_ul }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    {% endif %}
+
+                    <form method="POST" action="{% url 'login' %}">
+                        {% csrf_token %}
+
+                        <div class="form-group mb-4">
+                            <label for="{{ form.username.id_for_label }}" class="form-label fs-5">Username:</label>
+                            <input type="text" name="{{ form.username.name }}" id="{{ form.username.id_for_label }}" class="form-control form-control-lg rounded-3 border-primary" value="{{ form.username.value }}" placeholder="Enter your username" />
+                            {% if form.username.errors %}
+                            <div class="invalid-feedback d-block">
+                                {{ form.username.errors }}
+                            </div>
+                            {% endif %}
+                        </div>
+
+                        <div class="form-group mb-4">
+                            <label for="{{ form.password.id_for_label }}" class="form-label fs-5">Password:</label>
+                            <input type="password" name="{{ form.password.name }}" id="{{ form.password.id_for_label }}" class="form-control form-control-lg rounded-3 border-primary" value="{{ form.password.value }}" placeholder="Enter your password" />
+                            {% if form.password.errors %}
+                            <div class="invalid-feedback d-block">
+                                {{ form.password.errors }}
+                            </div>
+                            {% endif %}
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-lg btn-block mt-3 rounded-3 shadow-lg">Login</button>
+
+                        <div class="text-center mt-4">
+                            <p class="mb-0">Don't have an account? <a href="{% url 'register' %}" class="btn btn-link text-primary">Create a new account</a></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
