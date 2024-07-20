@@ -42,7 +42,7 @@ This Django project focuses on user profile management with authentication featu
 
 7. **Apply migrations**:
    ```bash
-   cpython manage.py migrate
+   python manage.py migrate
 
 8. **Run the development server**:
    ```bash
