@@ -24,17 +24,17 @@ This Django project focuses on user profile management with authentication featu
    ```bash
    cd django-user-profile
    
-3. **Create a virtual environment**:
+2. **Navigate to the project directory**:
+   ```bash
+   cd auth_project
+
+4. **Create a virtual environment**:
    ```bash
    python -m venv env
 
-4. **Activate the virtual environment**:
+5. **Activate the virtual environment**:
    ```bash
    .\env\Scripts\activate
-
-5. **Navigate to the project directory**:
-   ```bash
-   cd django-user-profile
 
 6. **Install dependencies**:
    ```bash
